@@ -64,14 +64,24 @@ header {
   /* border-top: 1px solid black;
   border-bottom: 1px solid black; */
   margin: .5rem auto;
+  position: relative;
 }
 
-.row:hover, .row:focus {
+.row:hover {
   opacity: 0.75;
 }
 
+.row h3{
+  margin: 1rem;
+}
+
 .block {
-  width: 60%;
+  width: 70%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: auto;
   /* height: 50px; */
   /* background-color: #ff6961; */
 }
@@ -86,7 +96,20 @@ header {
 }
 
 .time:hover, .save:hover{
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--alert);
+}
+
+input{
+  color: #ad615d);
+  outline: none;
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.427);
+  height: 100%;
+  width: 70%;
+  font-size: 1.75rem;
+  position: absolute;
+
+  /* margin: 0 .2rem; */
 }
 
 

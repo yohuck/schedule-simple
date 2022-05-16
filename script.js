@@ -2,12 +2,16 @@
 let current = $("#currentDay");
 let timeNow;
 
+let second = () => {
+current.text(moment().format('dddd, MMM Do. h:mm:ss a'));
+    timeNow = moment().format('HH');
+    // timeNow = 15
+    update();
+}
+
 // Updates time every second
 setInterval(function(){
-    current.text(moment().format('dddd, MMM Do. h:mm:ss a'));
-    timeNow = moment().format('HH');
-    timeNow = 15
-    update();
+    second();
 }, 1000)
 
 // Accesses the rows by time
@@ -20,8 +24,7 @@ let twoPM = $('#14');
 let threePM = $('#15');
 let fourPM = $('#16');
 let fivePM = $('#17');
-let latePM = $('#23');
-let workDay = [nineAM, tenAM, elevenAM, twelvePM, onePM, twoPM, threePM, fourPM, fivePM, latePM];
+let workDay = [nineAM, tenAM, elevenAM, twelvePM, onePM, twoPM, threePM, fourPM, fivePM];
 
 // Updates time blocks based on current time
 let update = () => {
@@ -55,12 +58,31 @@ let update = () => {
         }
     })
 }
+second();
+update();
 
 
 workDay.forEach(element => {
-    element[0].addEventListener('click', function(){
-        let input = document.createElement("input")
+    element[0].children[0].addEventListener('click', function(){
+        let typeIn = document.createElement('input');
+        typeIn.setAttribute('autofocus',true);
+        typeIn.setAttribute('placeholder','Add your task')
+        element[0].children[1].append(typeIn);
+        console.log(element[0].children[1]);
+        typeIn.addEventListener('keypress', function(event){
+            console.log(typeIn);
+            if (event.keyCode == 13){
+                let textToPass = typeIn.value;
+                typeIn.remove()
+                let input = document.createElement("div");
+        input.setAttribute('class','entry');
+        let text = document.createElement("h3");
+        text.textContent = textToPass;
+        input.append(text);
         element[0].children[1].append(input)
-        console.log(element[0].children[1])
+            }
+        })
     })  
 })
+
+
