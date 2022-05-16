@@ -5,7 +5,7 @@ let timeNow;
 let second = () => {
 current.text(moment().format('dddd, MMM Do. h:mm:ss a'));
     timeNow = moment().format('HH');
-    // timeNow = 15
+    timeNow = 15
     update();
 }
 
