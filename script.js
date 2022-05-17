@@ -2,6 +2,7 @@
 let current = $("#currentDay");
 let timeNow;
 
+// To run on interval - sets the time text and calls the update to change block colors on hour change
 let second = () => {
 current.text(moment().format('dddd, MMM Do. h:mm:ss a'));
     timeNow = moment().format('HH');
@@ -64,13 +65,18 @@ second();
 update();
 
 
-
-
 workDay.forEach(element => {
     // Ensures event inputs do not stack.
     let hasEventListener = false;
     let typeIn = document.createElement('input');
     typeIn.setAttribute('placeholder','');  
+    // Callback function for input functionality
+    let createInput = () => {
+        hasEventListener = true;
+        typeIn.setAttribute('autofocus', true);
+        typeIn.setAttribute('placeholder','Add your task')
+        element[0].children[1].append(typeIn);
+    }
     // Callback for save functionality
     let saveFunc = () => {
         hasEventListener = false;
@@ -82,18 +88,15 @@ workDay.forEach(element => {
         let text = document.createElement("h3");
         text.textContent = textToPass;
         input.append(text);
-        element[0].children[1].append(input)
+        element[0].children[1].append(input);
+        console.log(element[0].id);
+        console.log(textToPass);
+        let itemToStorage = element[0].id + textToPass;
+        localStorage.setItem(JSON.stringify(element[0].id), JSON.stringify(textToPass))
         }
-    // Callback function for input functionality
-    let createInput = () => {
-        hasEventListener = true;
-        typeIn.setAttribute('autofocus', true);
-        typeIn.setAttribute('placeholder','Add your task')
-        element[0].children[1].append(typeIn);
-    }
-    // Callback for save functionaltiy
+    // Callback for adding save button and return to save
     let saveFunctions = () => {
-        // adds enter for save functionality
+        // adds return for save functionality
         typeIn.addEventListener('keypress', function(event){
             if (event.keyCode == 13){
                 saveFunc();
