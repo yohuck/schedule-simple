@@ -89,10 +89,8 @@ workDay.forEach(element => {
         text.textContent = textToPass;
         input.append(text);
         element[0].children[1].append(input);
-        console.log(element[0].id);
-        console.log(textToPass);
-        let itemToStorage = element[0].id + textToPass;
-        localStorage.setItem(JSON.stringify(element[0].id), JSON.stringify(textToPass))
+        let idToPass = element[0].id
+        storageCallback(idToPass,textToPass);
         }
     // Callback for adding save button and return to save
     let saveFunctions = () => {
@@ -107,6 +105,13 @@ workDay.forEach(element => {
             saveFunc();
         })
         }
+    // Callback Function to save local storage
+    let storageCallback = (id, text) => {
+        let storedItems = localStorage.getItem('storedLocalItems');
+        storedItems = storedItems? JSON.parse(storedItems) : {};
+        storedItems[id] = text;
+        localStorage.setItem('storedLocalItems',JSON.stringify(storedItems));
+    }
     // click time to add event
     element[0].children[0].addEventListener('click', function(){
         createInput();
@@ -122,3 +127,15 @@ workDay.forEach(element => {
 })
 
 
+
+const storedEvents = JSON.parse(localStorage.getItem('storedLocalItems'));
+console.log(storedEvents)
+
+for (let id in storedEvents){
+    let format = "#" + id
+    let toAppend = $(format);
+    toAppend = toAppend.children()[1]
+    let text = document.createElement("h3");
+        text.textContent = storedEvents[id];
+        toAppend.append(text);
+}
