@@ -62,25 +62,44 @@ second();
 update();
 
 
+
+
 workDay.forEach(element => {
     element[0].children[0].addEventListener('click', function(){
         let typeIn = document.createElement('input');
         typeIn.setAttribute('autofocus',true);
         typeIn.setAttribute('placeholder','Add your task')
         element[0].children[1].append(typeIn);
-        console.log(element[0].children[1]);
+        console.log(typeIn)
         typeIn.addEventListener('keypress', function(event){
-            console.log(typeIn);
             if (event.keyCode == 13){
                 let textToPass = typeIn.value;
+                typeIn.value = ''
                 typeIn.remove()
                 let input = document.createElement("div");
-        input.setAttribute('class','entry');
-        let text = document.createElement("h3");
-        text.textContent = textToPass;
-        input.append(text);
-        element[0].children[1].append(input)
+                input.setAttribute('class','entry');
+                let text = document.createElement("h3");
+                text.textContent = textToPass;
+                input.append(text);
+                element[0].children[1].append(input)
             }
+        })
+        element[0].children[2].addEventListener('click', function(){
+
+            if( typeIn) {
+                let textToPass = typeIn.value;
+                typeIn.value = ''
+                typeIn.remove()
+                let input = document.createElement("div");
+                input.setAttribute('class','entry');
+                let text = document.createElement("h3");
+                text.textContent = textToPass;
+                input.append(text);
+                element[0].children[1].append(input)
+                console.log('yep')
+            } else console.log('nothing to enter yet')
+            
+
         })
     })  
 })
