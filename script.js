@@ -77,6 +77,7 @@ workDay.forEach(element => {
         // adds enter for save functionality
         typeIn.addEventListener('keypress', function(event){
             if (event.keyCode == 13){
+                hasEventListener = false
                 let textToPass = typeIn.value;
                 typeIn.value = ''
                 typeIn.remove()
@@ -91,6 +92,7 @@ workDay.forEach(element => {
         // adds save button functionality
         element[0].children[2].addEventListener('click', function(){
             if( typeIn) {
+                hasEventListener = false
                 let textToPass = typeIn.value;
                 typeIn.value = ''
                 typeIn.remove()
