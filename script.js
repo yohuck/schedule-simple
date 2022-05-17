@@ -61,16 +61,20 @@ let update = () => {
 second();
 update();
 
+let hasEventListener = false;
 
-
-
+let typeIn = document.createElement('input')
+typeIn.setAttribute('placeholder','')
 workDay.forEach(element => {
+    // adds input functionality to each time block.
     element[0].children[0].addEventListener('click', function(){
-        let typeIn = document.createElement('input');
-        typeIn.setAttribute('autofocus',true);
+        hasEventListener = true;
+        typeIn = document.createElement('input');
+        typeIn.setAttribute('autofocus', true);
         typeIn.setAttribute('placeholder','Add your task')
         element[0].children[1].append(typeIn);
-        console.log(typeIn)
+        if (element[0].children[1])
+        // adds enter for save functionality
         typeIn.addEventListener('keypress', function(event){
             if (event.keyCode == 13){
                 let textToPass = typeIn.value;
@@ -84,8 +88,8 @@ workDay.forEach(element => {
                 element[0].children[1].append(input)
             }
         })
+        // adds save button functionality
         element[0].children[2].addEventListener('click', function(){
-
             if( typeIn) {
                 let textToPass = typeIn.value;
                 typeIn.value = ''
@@ -96,12 +100,51 @@ workDay.forEach(element => {
                 text.textContent = textToPass;
                 input.append(text);
                 element[0].children[1].append(input)
-                console.log('yep')
             } else console.log('nothing to enter yet')
             
-
         })
-    })  
+    }) 
+
+
+    element[0].children[1].addEventListener('click', function(){
+        if(hasEventListener == false) {   
+            hasEventListener = true; 
+            typeIn = document.createElement('input');
+            typeIn.setAttribute('autofocus',true);
+            typeIn.setAttribute('placeholder','Add your task')
+            element[0].children[1].append(typeIn);
+            // adds enter for save functionality
+            typeIn.addEventListener('keypress', function(event){
+                if (event.keyCode == 13){
+                    hasEventListener = false;
+                    let textToPass = typeIn.value;
+                    typeIn.value = ''
+                    typeIn.remove()
+                    let input = document.createElement("div");
+                    input.setAttribute('class','entry');
+                    let text = document.createElement("h3");
+                    text.textContent = textToPass;
+                    input.append(text);
+                    element[0].children[1].append(input)
+                }
+            })
+            // adds save button functionality
+            element[0].children[2].addEventListener('click', function(){
+                if( typeIn) {
+                    hasEventListener = false
+                    let textToPass = typeIn.value;
+                    typeIn.value = ''
+                    typeIn.remove()
+                    let input = document.createElement("div");
+                    input.setAttribute('class','entry');
+                    let text = document.createElement("h3");
+                    text.textContent = textToPass;
+                    input.append(text);
+                    element[0].children[1].append(input)
+                } else console.log('nothing to enter yet')
+            })
+        }
+    }) 
 })
 
 
