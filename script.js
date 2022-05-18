@@ -72,10 +72,22 @@ workDay.forEach(element => {
     typeIn.setAttribute('placeholder','');  
     // Callback function for input functionality
     let createInput = () => {
+        // console.log(element[0])
+        if (hasData[element[0].id] == true){
+            hasEventListener = true;
+            typeIn.setAttribute('autofocus', true)
+            typeIn.setAttribute('value', element[0].children[1].textContent.trim())
+            if (element[0].children[1].children.length === 1){
+                element[0].children[1].children[0].remove()
+            element[0].children[1].append(typeIn)}
+            else console.log('okay')
+            } 
+        else {
         hasEventListener = true;
         typeIn.setAttribute('autofocus', true);
         typeIn.setAttribute('placeholder','Add your task')
         element[0].children[1].append(typeIn);
+        }
     }
     // Callback for save functionality
     let saveFunc = () => {
@@ -90,6 +102,8 @@ workDay.forEach(element => {
         input.append(text);
         element[0].children[1].append(input);
         let idToPass = element[0].id
+        hasData[idToPass] = true;
+        console.log(hasData)
         storageCallback(idToPass,textToPass);
         }
     // Callback for adding save button and return to save
@@ -119,6 +133,7 @@ workDay.forEach(element => {
     }) 
     // click row to add event -- checks to block stacking
     element[0].children[1].addEventListener('click', function(){
+        console.log(element[0].children[1].children.length == 0)
         if(hasEventListener == false) {   
             createInput();
             saveFunctions();
