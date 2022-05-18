@@ -43,16 +43,9 @@ header {
   justify-content: center;
   align-items: center;
   height: 10vh;
-  /* max-width: 500px; */
-  /* margin: 0rem 1rem; */
   text-align: center;
-  /* position: fixed; */
-}
 
-#currentDay {
-  /* max-width: 200px; */
 }
-
 
 .row {
   max-width: 1000px;
@@ -61,8 +54,6 @@ header {
   justify-content: space-between;
   height: 10vh;
   background-color: var(--future);
-  /* border-top: 1px solid black;
-  border-bottom: 1px solid black; */
   margin: .5rem auto;
   position: relative;
 }
@@ -82,8 +73,6 @@ header {
   align-items: center;
   flex-wrap: wrap;
   overflow: auto;
-  /* height: 50px; */
-  /* background-color: #ff6961; */
 }
 
 .time, .save {
@@ -95,12 +84,10 @@ header {
   width: 15%;
 }
 
-.time:hover, .save:hover{
-  background-color: var(--alert);
-}
+
 
 input{
-  color: #ad615d);
+  color: white;
   outline: none;
   box-shadow: none;
   background-color: rgba(0, 0, 0, 0.427);
@@ -108,48 +95,10 @@ input{
   width: 70%;
   font-size: 1.75rem;
   position: absolute;
-
-  /* margin: 0 .2rem; */
 }
 
 
-/* .save {
-  width: 15%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: var(--alert);
-} */
 
-/* .jumbotron {
-  text-align: center;
-  background-color: transparent;
-  color: black;
-  border-radius: 0;
-  border-bottom: 10px solid black;
-} */
-
-/* .description {
-  white-space: pre-wrap;
-} */
-
-.time-block {
-  text-align: center;
-  border-radius: 15px;
-}
-
-/* .row {
-  white-space: pre-wrap;
-  height: 80px;
-  border-top: 1px solid white;
-} */
-
-.hour {
-  background-color: #ffffff;
-  color: #000000;
-  border-top: 1px dashed #000000;
-}
 
 .past {
   background-color: var(--past);
@@ -167,15 +116,3 @@ input{
   color: white;
 }
 
-.saveBtn {
-  border-left: 1px solid black;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  background-color: #06aed5;
-  color: white;
-}
-
-.saveBtn i:hover {
-  font-size: 20px;
-  transition: all 0.3s ease-in-out;
-}

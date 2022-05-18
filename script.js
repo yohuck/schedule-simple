@@ -122,16 +122,29 @@ workDay.forEach(element => {
         if(hasEventListener == false) {   
             createInput();
             saveFunctions();
-        }
+        } else console.log('hello')
     }) 
 })
 
+let hasData = {
+    09: false,
+    10: false,
+    11: false,
+    12: false,
+    13: false,
+    14: false,
+    15: false,
+    16: false,
+    17: false
+}
 
+console.log(hasData)
 
 const storedEvents = JSON.parse(localStorage.getItem('storedLocalItems'));
 console.log(storedEvents)
 
 for (let id in storedEvents){
+    hasData[id] = true;
     let format = "#" + id
     let toAppend = $(format);
     toAppend = toAppend.children()[1]
@@ -139,3 +152,5 @@ for (let id in storedEvents){
         text.textContent = storedEvents[id];
         toAppend.append(text);
 }
+
+console.log(hasData)
