@@ -133,7 +133,7 @@ workDay.forEach(element => {
     }) 
     // click row to add event -- checks to block stacking
     element[0].children[1].addEventListener('click', function(){
-        console.log(element[0].children[1].children.length == 0)
+        console.log(element[0].children[1].children.length)
         if(hasEventListener == false) {   
             createInput();
             saveFunctions();
