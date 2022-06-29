@@ -1,4 +1,4 @@
-# DU Bootcamp Challenge #5 - Day Calendar
+# Day Calendar
 
 Link to live project: https://yohuck.github.io/schedule-simple/
 
